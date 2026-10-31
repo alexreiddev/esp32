@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Builds &amp; Projects</title>
+<meta name="description" content="Builds and projects: hardware, client sites, apps, games and experiments, with links and a short note on each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Cpath d='M9 22V10h4l3 7 3-7h4v12' stroke='%23f5c451' stroke-width='2.4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --ink:#15161a; --muted:#666a73; --line:#e3e1da;
+  --accent:#c98a00; --chip:#efede6;
+  --live:#1f8a4c; --building:#c06a00; --shipped:#4a5aa8; --idea:#8a8f99;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f1012; --surface:#17191c; --ink:#ecebe6; --muted:#9a9ea7; --line:#262a2f;
+  --accent:#f5c451; --chip:#20242a;
+  --live:#4fd18b; --building:#f0a24a; --shipped:#8fa0ff; --idea:#8a8f99;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Inter Tight",system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.wrap{padding-top:64px;padding-bottom:28px}
+.eyebrow{font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 14px;font-weight:700}
+.lede{max-width:620px;color:var(--muted);font-size:18px;margin:0}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.stat b{display:block;font-size:28px;letter-spacing:-.02em}
+.stat span{color:var(--muted);font-size:13px}
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;gap:12px;align-items:center;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 13px;font:500 14px "Inter Tight",sans-serif;cursor:pointer}
+.chip .n{color:var(--muted);margin-left:4px;font-size:12px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.search{flex:0 1 240px;min-width:0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px}
+.search:focus,.chip:focus-visible,.card a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:28px 0 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat{font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--s)}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--s)}
+.status.live::before{box-shadow:0 0 0 0 var(--s);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.card h2{font-size:20px;letter-spacing:-.015em;margin:0;line-height:1.2}
+.card p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{background:var(--chip);border-radius:6px;padding:2px 7px;font:12px "JetBrains Mono",monospace;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.links a{text-decoration:none;font-weight:600;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;display:inline-flex;gap:6px;align-items:center}
+.links a:first-child{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.links a:hover{border-color:var(--accent)}
+.links .none{font-size:13px;color:var(--muted);padding:6px 0}
+.empty{color:var(--muted);text-align:center;padding:60px 0;display:none}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  header.wrap{padding-top:40px;padding-bottom:20px}
+  .search{flex:1 1 100%}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="eyebrow">Build log · updated continuously</div>
+  <h1>Things we've built,<br>and what we're building now.</h1>
+  <p class="lede">Hardware, client sites, apps, games and experiments. Each card has a short note and links to the live build or the code.</p>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="chips" id="chips" role="toolbar" aria-label="Filter by category"></div>
+    <input class="search" id="q" type="search" placeholder="Search builds…" aria-label="Search builds">
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">No builds match that search.</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> alexreiddev</span>
+    <a href="https://github.com/alexreiddev">github.com/alexreiddev</a>
+  </div>
+</footer>
+
+<script src="projects.js"></script>
+<script>
+const CATS = {
+  all: "All",
+  hardware: "Hardware & IoT",
+  client: "Client & business",
+  apps: "Apps & tools",
+  games: "Games & stories",
+  pitch: "Pitches",
+  demos: "Fix demos",
+};
+const STATUS = {
+  live: ["Live", "--live"],
+  building: ["Building", "--building"],
+  shipped: ["Shipped", "--shipped"],
+  idea: ["Planned", "--idea"],
+};
+const ORDER = { building: 0, live: 1, shipped: 2, idea: 3 };
+const P = [...window.PROJECTS].sort(
+  (a, b) => ORDER[a.status] - ORDER[b.status] || b.updated.localeCompare(a.updated)
+);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+let cat = "all", q = "";
+try { cat = new URLSearchParams(location.search).get("c") || "all"; if (!CATS[cat]) cat = "all"; } catch (e) {}
+
+const count = (fn) => P.filter(fn).length;
+document.getElementById("stats").innerHTML = [
+  [P.length, "projects"],
+  [count((p) => p.status === "live"), "live now"],
+  [count((p) => p.status === "building"), "in progress"],
+  [new Set(P.map((p) => p.category)).size, "areas"],
+].map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+
+function chips() {
+  document.getElementById("chips").innerHTML = Object.entries(CATS).map(([k, l]) => {
+    const n = k === "all" ? P.length : count((p) => p.category === k);
+    return n ? `<button class="chip" data-c="${k}" aria-pressed="${cat === k}">${l}<span class="n">${n}</span></button>` : "";
+  }).join("");
+}
+
+function render() {
+  const t = q.trim().toLowerCase();
+  const list = P.filter((p) =>
+    (cat === "all" || p.category === cat) &&
+    (!t || [p.name, p.info, ...(p.tags || [])].join(" ").toLowerCase().includes(t))
+  );
+  document.getElementById("grid").innerHTML = list.map((p) => {
+    const [sl, sv] = STATUS[p.status] || STATUS.shipped;
+    const links = (p.links || []).length
+      ? p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")
+      : `<span class="none">Link coming soon</span>`;
+    return `<article class="card">
+      <div class="top"><span class="cat">${esc(CATS[p.category] || p.category)}</span>
+        <span class="status ${p.status}" style="--s:var(${sv})">${sl}</span></div>
+      <h2>${esc(p.name)}</h2>
+      <p>${esc(p.info)}</p>
+      <div class="tags">${(p.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>
+      <div class="links">${links}</div>
+    </article>`;
+  }).join("");
+  document.getElementById("empty").style.display = list.length ? "none" : "block";
+}
+
+document.getElementById("chips").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-c]");
+  if (!b) return;
+  cat = b.dataset.c;
+  try { history.replaceState(null, "", cat === "all" ? location.pathname : "?c=" + cat); } catch (e) {}
+  chips(); render();
+});
+document.getElementById("q").addEventListener("input", (e) => { q = e.target.value; render(); });
+document.getElementById("yr").textContent = new Date().getFullYear();
+chips(); render();
+</script>
+</body>
+</html>
