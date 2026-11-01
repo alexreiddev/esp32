@@ -207,13 +207,22 @@ window.PROJECTS = [
     status: "building",
     updated: "2026-10",
     tags: ["PWA", "Vite"],
-    info: "Our newest build: an installable web app with a core engine, an ops console and a Kochi edition, plus ESP32 captive-portal relay nodes for field play.",
+    info: "Installable SAFEHOUSE web apps (engine, ops and Kochi builds), plus ESP32 captive-portal relay nodes for field play.",
     links: [
       { label: "Engine", url: "https://safehouse-engine.vercel.app" },
       { label: "Ops", url: "https://safehouse-ops.vercel.app" },
       { label: "Kochi", url: "https://safehouse-kochi.vercel.app" },
       { label: "Relay firmware", url: GH("esp32", "ccr-205b5a93-4nm8vj") },
     ],
+  },
+  {
+    name: "SAFEHOUSE: Periyar Grid",
+    category: "games",
+    status: "live",
+    updated: "2026-11",
+    tags: ["Field game", "PWA"],
+    info: "Outdoor SAFEHOUSE game played on your phone. Each phone saves its own progress.",
+    links: [{ label: "Play", url: "https://safehouse-periyar-grid.vercel.app" }],
   },
   {
     name: "Little Log",
