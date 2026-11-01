@@ -230,8 +230,8 @@ window.PROJECTS = [
     status: "live",
     updated: "2026-10",
     tags: ["Supabase", "PWA"],
-    info: "Baby tracker shared by both parents: feeds, sleep, diapers, temperature, WHO growth percentiles, milestones and CSV export.",
-    links: [{ label: "Live", url: "https://little-log-mu.vercel.app" }],
+    info: "Private baby tracker shared by both parents: feeds, sleep, diapers, temperature, WHO growth percentiles, milestones and CSV export.",
+    links: [], // private family app: no public link
   },
   {
     name: "Agar Plate Log",
