@@ -7,7 +7,8 @@
 //  links:    [{ label, url }]  — first link is the main one
 //  updated:  "YYYY-MM" (used for sorting, newest first)
 // ─────────────────────────────────────────────────────────────
-const GH = (r) => `https://github.com/alexreiddev/${r}`;
+const GH = (r, branch) =>
+  `https://github.com/alexreiddev/${r}` + (branch ? `/tree/${branch}` : "");
 
 window.PROJECTS = [
   // ── Hardware & IoT ─────────────────────────────────────────
@@ -96,7 +97,7 @@ window.PROJECTS = [
     tags: ["Catalogue", "UAE"],
     info: "Catalogue and enquiry site for certified PPE and safety equipment in the UAE.",
     links: [
-      { label: "Live", url: "https://oasis-star.netlify.app" },
+      { label: "Live", url: "https://resonant-palmier-f80ab1.netlify.app" },
       { label: "Code", url: GH("PPE") },
     ],
   },
@@ -129,6 +130,7 @@ window.PROJECTS = [
     tags: ["Supabase", "Bookings"],
     info: "Trivandrum's first board game cafe: the public website and the booking web app.",
     links: [
+      { label: "Site", url: "https://relaxed-fox-de6edd.netlify.app" },
       { label: "App", url: "https://pakida-test.vercel.app" },
       { label: "Site code", url: GH("pakida-live") },
       { label: "App code", url: GH("pakida-test") },
@@ -205,11 +207,12 @@ window.PROJECTS = [
     status: "building",
     updated: "2026-10",
     tags: ["PWA", "Vite"],
-    info: "Our newest build: an installable web app with a core engine, an ops console and a Kochi edition.",
+    info: "Our newest build: an installable web app with a core engine, an ops console and a Kochi edition, plus ESP32 captive-portal relay nodes for field play.",
     links: [
       { label: "Engine", url: "https://safehouse-engine.vercel.app" },
       { label: "Ops", url: "https://safehouse-ops.vercel.app" },
       { label: "Kochi", url: "https://safehouse-kochi.vercel.app" },
+      { label: "Relay firmware", url: GH("esp32", "ccr-205b5a93-4nm8vj") },
     ],
   },
   {
@@ -396,23 +399,50 @@ window.PROJECTS = [
     ],
   },
 
-  // ── Ideas being set up ────────────────────────────────────
+  // ── Work on side branches ─────────────────────────────────
   {
-    name: "Reddit bot",
+    name: "Kerala Reddit Opportunity Bot",
     category: "apps",
-    status: "idea",
+    status: "shipped",
     updated: "2026-08",
-    tags: ["Automation"],
-    info: "Repo created. The build hasn't started yet.",
-    links: [{ label: "Repo", url: GH("redditbot") }],
+    tags: ["Python", "Claude API", "Reddit"],
+    info: "Scans Kerala subreddits for people asking for products or services that don't exist yet, has Claude score each one as a business idea, and ranks them.",
+    links: [{ label: "Code", url: GH("redditbot", "claude/reddit-kerala-business-bot-WZB2Q") }],
   },
   {
     name: "FinPlan",
     category: "apps",
-    status: "idea",
+    status: "shipped",
     updated: "2026-05",
-    tags: ["Finance"],
-    info: "Personal finance planner. Repo created, build not started.",
-    links: [{ label: "Repo", url: GH("finplan") }],
+    tags: ["Finance", "Full-stack"],
+    info: "Expense tracker that predicts the day your cash runs out at your current spending rate, with needs-vs-wants breakdowns.",
+    links: [{ label: "Code", url: GH("finplan", "claude/financial-planner-expense-tracker-8JBtE") }],
+  },
+  {
+    name: "wifimap radar",
+    category: "hardware",
+    status: "shipped",
+    updated: "2026-06",
+    tags: ["ESP32", "BLE", "WiFi CSI", "iOS", "Android"],
+    info: "Turns one ESP32 into a live radar of nearby devices (WiFi and Bluetooth) and people (WiFi CSI), with web, Android and iOS viewers.",
+    links: [{ label: "Code", url: GH("wifimap", "claude/esp32-device-human-mapping-1x3mwf") }],
+  },
+  {
+    name: "TechRec",
+    category: "apps",
+    status: "shipped",
+    updated: "2026-03",
+    tags: ["Android", "Python", "Claude API"],
+    info: "Android app that recommends tech products from plain-English requests like \"gaming laptop under 50k\", asking follow-up questions to narrow it down.",
+    links: [{ label: "Code", url: GH("claude-water-hyacinth-projects", "claude/product-recommendation-app-r1Tzk") }],
+  },
+  {
+    name: "Ortho Dentique",
+    category: "client",
+    status: "building",
+    updated: "2026-10",
+    tags: ["Clinic site"],
+    info: "Website for an orthodontic and dental clinic in Perumbavoor.",
+    links: [],
   },
 ];
